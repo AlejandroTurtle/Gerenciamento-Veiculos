@@ -1,0 +1,10 @@
+{
+  "vehicles": [
+    {
+      "id": "e2863dc5-9778-4d29-9fe8-5f7de4cfee6b",
+      "plate": "abc-1234",
+      "color": "rosa",
+      "mark": "celta"
+    }
+  ]
+}
