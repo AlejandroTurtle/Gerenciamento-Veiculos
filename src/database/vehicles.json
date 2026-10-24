@@ -1,10 +1,130 @@
 {
   "vehicles": [
     {
-      "id": "e2863dc5-9778-4d29-9fe8-5f7de4cfee6b",
-      "plate": "abc-1234",
+      "id": "c177072f-aff7-45b3-bf4b-b38182f8b0a3",
+      "plate": "ABC-1234",
       "color": "rosa",
       "mark": "celta"
+    },
+    {
+      "id": "83b6dc7b-c57a-45ac-9f28-7530adb119d6",
+      "plate": "OND-7828",
+      "color": "preto",
+      "mark": "Toyota"
+    },
+    {
+      "id": "079d9f17-efdf-4bfe-b1c3-fa16056b6aba",
+      "plate": "PNE-2856",
+      "color": "vermelho",
+      "mark": "Toyota"
+    },
+    {
+      "id": "22c14994-b0e6-4490-aaab-0c4f93ff6ba6",
+      "plate": "FXV-7673",
+      "color": "vermelho",
+      "mark": "Honda"
+    },
+    {
+      "id": "5445ff0d-c3c5-4745-9c97-5df676b549cb",
+      "plate": "MUD-3570",
+      "color": "preto",
+      "mark": "Hyundai"
+    },
+    {
+      "id": "501aa959-98f1-4897-8105-b87662f65739",
+      "plate": "RFC-7483",
+      "color": "cinza",
+      "mark": "Fiat"
+    },
+    {
+      "id": "3b71b932-ee2d-477a-ba6d-7ffe20b0e085",
+      "plate": "PXB-8045",
+      "color": "prata",
+      "mark": "Chevrolet"
+    },
+    {
+      "id": "cce63a97-1be4-4046-8412-f27511ab0cd9",
+      "plate": "LTU-7709",
+      "color": "branco",
+      "mark": "Toyota"
+    },
+    {
+      "id": "40e0f243-e90c-40d9-bc03-d5b3e649f4f7",
+      "plate": "XSA-3529",
+      "color": "preto",
+      "mark": "Nissan"
+    },
+    {
+      "id": "91a12a53-1f05-4fc8-b3b2-509e20555df8",
+      "plate": "CEO-8903",
+      "color": "vermelho",
+      "mark": "Honda"
+    },
+    {
+      "id": "0b5f70fc-fded-449f-a060-b4cbe4bfabf0",
+      "plate": "UTM-9734",
+      "color": "vermelho",
+      "mark": "Hyundai"
+    },
+    {
+      "id": "d7147190-cc69-4c09-97cc-a03fc55c28d7",
+      "plate": "CST-8055",
+      "color": "preto",
+      "mark": "Ford"
+    },
+    {
+      "id": "3db0f9c1-6006-4fa5-b3fd-11d3eee823eb",
+      "plate": "BRA-0606",
+      "color": "cinza",
+      "mark": "Honda"
+    },
+    {
+      "id": "97a7bc33-4f3b-446e-a7bf-785d0efd12cf",
+      "plate": "ZIP-9704",
+      "color": "branco",
+      "mark": "Nissan"
+    },
+    {
+      "id": "5b03a88d-320b-41de-b2f2-0139b5075535",
+      "plate": "GLI-8083",
+      "color": "branco",
+      "mark": "Volkswagen"
+    },
+    {
+      "id": "807eaacd-20b0-4573-88bc-51994a12b5c0",
+      "plate": "IVO-4844",
+      "color": "prata",
+      "mark": "Fiat"
+    },
+    {
+      "id": "68031dc0-738c-4ec6-ac91-23d5b864ffb6",
+      "plate": "AJQ-9190",
+      "color": "vermelho",
+      "mark": "Toyota"
+    },
+    {
+      "id": "ec9a3379-1838-42a6-b69d-25debdfbc73f",
+      "plate": "KNO-1482",
+      "color": "azul",
+      "mark": "Chevrolet"
+    },
+    {
+      "id": "6217497d-4af9-487f-8687-5d5ed50bc6a0",
+      "plate": "KUC-8330",
+      "color": "azul",
+      "mark": "Fiat"
+    },
+    {
+      "id": "c1519987-5e84-48e7-8ea9-83ed9e936622",
+      "plate": "JMK-7269",
+      "color": "preto",
+      "mark": "Ford"
+    },
+    {
+      "id": "9998341a-0ec5-4011-9227-a8a720d69758",
+      "plate": "VJC-0068",
+      "color": "cinza",
+      "mark": "Volkswagen"
     }
   ]
 }
