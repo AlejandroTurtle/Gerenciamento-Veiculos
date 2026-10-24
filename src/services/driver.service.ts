@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { v4 as uuidv4 } from 'uuid';
+import { DriverStatusEnum } from '../models/driver.model';
 import type {
   Driver,
   DriverDatabase,
@@ -35,6 +36,7 @@ export default class DriverService {
     const newDriver: Driver = {
       id: uuidv4(),
       name: driver.name,
+      status: DriverStatusEnum.AVAILABLE,
     };
 
     database.drivers.push(newDriver);
@@ -54,7 +56,11 @@ export default class DriverService {
       throw new DriverNotFoundError();
     }
 
-    const updatedDriver: Driver = { id, name: driver.name };
+    const updatedDriver: Driver = {
+      id,
+      name: driver.name,
+      status: database.drivers[driverIndex].status ?? DriverStatusEnum.AVAILABLE,
+    };
     database.drivers[driverIndex] = updatedDriver;
     await this.writeDatabase(database);
 
@@ -72,6 +78,12 @@ export default class DriverService {
       throw new DriverNotFoundError();
     }
 
+    if (
+      database.drivers[driverIndex].status === DriverStatusEnum.USING_A_VEHICLE
+    ) {
+      throw new DriverInUseError();
+    }
+
     database.drivers.splice(driverIndex, 1);
     await this.writeDatabase(database);
   }
@@ -86,6 +98,23 @@ export default class DriverService {
     if (!driver) {
       throw new DriverNotFoundError();
     }
+
+    return driver;
+  }
+
+  async setDriverStatus(
+    id: string,
+    status: DriverStatusEnum
+  ): Promise<Driver> {
+    const database = await this.readDatabase();
+    const driver = database.drivers.find((savedDriver) => savedDriver.id === id);
+
+    if (!driver) {
+      throw new DriverNotFoundError();
+    }
+
+    driver.status = status;
+    await this.writeDatabase(database);
 
     return driver;
   }
@@ -111,5 +140,12 @@ export class DriverNotFoundError extends Error {
       'Motorista não encontrado. Verifique o ID fornecido e tente novamente.'
     );
     this.name = 'DriverNotFoundError';
+  }
+}
+
+export class DriverInUseError extends Error {
+  constructor() {
+    super('Não é possível excluir um motorista que está utilizando um veículo.');
+    this.name = 'DriverInUseError';
   }
 }

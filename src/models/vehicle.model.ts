@@ -6,6 +6,7 @@ export interface VehicleInput {
 
 export interface Vehicle extends VehicleInput {
   id: string;
+  vehicleInUse: boolean;
 }
 
 export interface VehicleDatabase {

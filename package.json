@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "tsx watch src/index.ts",
+    "test": "tsc --noEmit -p tsconfig.test.json && tsx --test tests/*.test.ts",
     "seed:vehicles": "tsx scripts/seed-vehicles.ts",
     "seed:drivers": "tsx scripts/seed-drivers.ts",
     "build": "tsc",

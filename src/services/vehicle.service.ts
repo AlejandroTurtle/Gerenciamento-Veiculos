@@ -37,6 +37,7 @@ export default class VehicleService {
       plate: vehicle.plate,
       color: vehicle.color,
       mark: vehicle.mark,
+      vehicleInUse: false,
     };
 
     vehiclesData.vehicles.push(newVehicle);
@@ -65,6 +66,7 @@ export default class VehicleService {
       plate: vehicle.plate,
       color: vehicle.color,
       mark: vehicle.mark,
+      vehicleInUse: vehiclesData.vehicles[vehicleIndex].vehicleInUse ?? false,
     };
 
     vehiclesData.vehicles[vehicleIndex] = updatedVehicle;
@@ -88,6 +90,10 @@ export default class VehicleService {
       throw new VehicleNotFoundError();
     }
 
+    if (vehiclesData.vehicles[vehicleIndex].vehicleInUse) {
+      throw new VehicleInUseError();
+    }
+
     vehiclesData.vehicles.splice(vehicleIndex, 1);
     await writeFile(
       databasePath,
@@ -106,6 +112,26 @@ export default class VehicleService {
     if (!vehicle) {
       throw new VehicleNotFoundError();
     }
+
+    return vehicle;
+  }
+
+  async setVehicleInUse(id: string, vehicleInUse: boolean): Promise<Vehicle> {
+    const vehiclesData = await this.readDatabase();
+    const vehicle = vehiclesData.vehicles.find(
+      (savedVehicle) => savedVehicle.id === id
+    );
+
+    if (!vehicle) {
+      throw new VehicleNotFoundError();
+    }
+
+    vehicle.vehicleInUse = vehicleInUse;
+    await writeFile(
+      databasePath,
+      `${JSON.stringify(vehiclesData, null, 2)}\n`,
+      'utf8'
+    );
 
     return vehicle;
   }
@@ -160,5 +186,12 @@ export class VehicleNotFoundError extends Error {
       'Veículo não encontrado. Verifique o ID fornecido e tente novamente.'
     );
     this.name = 'VehicleNotFoundError';
+  }
+}
+
+export class VehicleInUseError extends Error {
+  constructor() {
+    super('Não é possível excluir um veículo que está em uso.');
+    this.name = 'VehicleInUseError';
   }
 }

@@ -1,6 +1,7 @@
 import type { Request, Response } from 'express';
 import {
   DuplicateVehiclePlateError,
+  VehicleInUseError,
   VehicleNotFoundError,
 } from '../services/vehicle.service';
 import VehicleService from '../services/vehicle.service';
@@ -72,6 +73,10 @@ export default class VehicleController {
     } catch (error: any) {
       if (error instanceof VehicleNotFoundError) {
         return res.status(404).json({ error: error.message });
+      }
+
+      if (error instanceof VehicleInUseError) {
+        return res.status(409).json({ error: error.message });
       }
 
       return res

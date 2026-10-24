@@ -1,5 +1,8 @@
 import type { Request, Response } from 'express';
-import { DriverNotFoundError } from '../services/driver.service';
+import {
+  DriverInUseError,
+  DriverNotFoundError,
+} from '../services/driver.service';
 import DriverService from '../services/driver.service';
 import {
   driverFiltersSchema,
@@ -61,6 +64,10 @@ export default class DriverController {
     } catch (error) {
       if (error instanceof DriverNotFoundError) {
         return res.status(404).json({ error: error.message });
+      }
+
+      if (error instanceof DriverInUseError) {
+        return res.status(409).json({ error: error.message });
       }
 
       return res
